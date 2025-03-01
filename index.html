@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monzen - Pure Fruit Bliss</title>
+    <title>Monzen - Pure Fruit Bliss    </title>
     <style>
         * {
             margin: 0;
@@ -26,6 +26,7 @@
             align-items: center;
             padding: 20px;
             position: relative;
+            flex-wrap: wrap;
         }
         .logo {
             height: 120px;
@@ -69,12 +70,11 @@
             }
         }
         .menu-container {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        } 
+            position: relative; /* Relative positioning to avoid overlap */
+            right: auto;        /* Reset right positioning */
+            top: 10px;          /* Adjust top position if needed */
+            margin-left: auto;  /* Align to right */
+        }
         .menu-btn {
             font-size: 30px;
             cursor: pointer;
@@ -172,10 +172,28 @@
         }
         .why-us-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
             gap: 20px;
-            max-width: 80%;
+            max-width: 90%;
             margin: 20px auto;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .why-us-container {
+                grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .why-us-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets and desktops */
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .why-us-container {
+                grid-template-columns: repeat(2, 1fr); /* Force 2 columns on large desktops as well */
+            }
         }
         
         .feature-box {
